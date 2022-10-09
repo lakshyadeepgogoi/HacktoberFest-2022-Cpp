@@ -1,29 +1,44 @@
-// C++ program to implement Binary Search
-#include <iostream.h>
+#include<iostream>
 using namespace std;
- 
 
-int binarySearch(int arr[], int l, int r, int x)
-{
-   // enter your code here
-}
+// Function starts here
  
-int main()
-{   
-    int size;
-    cin>>size; //size of array
-    int arr[size];
-    
-    for(int i=0;i<size;i++){
-       cin>>arr[i]; // elemnents in the array
+int binarySearch(int arr[], int n, int key){
+    int s=0;
+    int last=n;
+    while(s<=last){
+        int mid=(s+last)/2;
+
+        if(arr[mid]==key){
+            return mid;
+        }
+        else if(arr[mid]>key){
+            last=mid-1;
+        }
+        else{
+            s=mid+1;
+        }
     }
-   
-   int element; // element to be searched
-    cin>>element;
- 
-    int result = binarySearch(arr, 0, size - 1, element);
-    (result == -1)
-        ? cout << "Element is not present in array"
-        : cout << "Element is present at index " << result;
+    return -1;
+
+}
+
+int main(){
+    int n;
+    cout<<"Enter the size for the array= "<<endl; //Enter the size of the arrays
+    cin>>n;
+    int arr[n];
+
+    for(int i=0; i<n; i++){
+        cout<<"Enter the value for "<<i+1<<" = ";
+        cin>>arr[i];
+    }
+
+    int key;
+    cout<<"Enter the value to be search= ";
+    cin>>key;
+
+    cout<<"The loaction is "<<binarySearch(arr,n,key);
+
     return 0;
 }
